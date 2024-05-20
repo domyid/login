@@ -6,60 +6,104 @@
     <link href="./output.css" rel="stylesheet" />
     <title>Login - SSO ITB</title>
   </head>
-  <body class="bg-blue-50 flex items-center justify-center lg:h-screen">
+  <body class="bg-base-200 flex items-center justify-center lg:h-screen">
     <div
-      class="flex items-center lg:items-stretch space-y-3 lg:space-y-0 flex-col lg:flex-row lg:justify-around lg:w-3/4 lg:space-x-5"
+      class="flex items-center lg:items-stretch space-y-3 lg:space-y-0 flex-col lg:flex-row lg:justify-around lg:w-3/4"
     >
       <!-- Form Login -->
       <div
-        class="flex justify-center flex-col bg-white shadow-lg rounded-lg p-8 w-3/4 lg:w-1/2 order-1 lg:order-2 mt-5 lg:mt-0"
+        class="flex justify-center items-center order-1 lg:order-2 w-3/4 lg:w-1/2"
       >
-        <div class="flex flex-col items-center">
-          <img src="./assets/images/logo.png" alt="ITB Logo" class="mb-4" />
-        </div>
-        <h4 class="font-bold text-center">Masuk</h4>
-        <form class="mt-4">
-          <div class="mb-4">
-            <label
-              for="username"
-              class="block text-sm font-medium text-gray-700"
-              >ITB Account</label
-            >
-            <input
-              type="text"
-              id="username"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
-              required
-            />
-          </div>
-          <div class="mb-6">
-            <label
-              for="password"
-              class="block text-sm font-medium text-gray-700"
-              >Password</label
-            >
-            <input
-              type="password"
-              id="password"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
-              required
-            />
-          </div>
-          <button
-            type="submit"
-            class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-sky-500 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+        <div role="tablist" class="tabs tabs-lifted">
+          <input
+            type="radio"
+            name="my_tabs_2"
+            role="tab"
+            class="tab"
+            aria-label="Login"
+            checked
+          />
+          <div
+            role="tabpanel"
+            class="tab-content bg-base-100 border-base-300 rounded-box p-6"
           >
-            Login
-          </button>
-        </form>
-        <div class="mt-3 text-center">
-          <a href="#" class="text-sky-500">Lupa Password ?</a>
-          <p>Info ITB Account <a href="#" class="text-sky-500">Klik ini.</a></p>
+            <div class="flex justify-center flex-col p-8 w-full">
+              <div class="flex flex-col items-center">
+                <img
+                  src="./assets/images/logo.png"
+                  alt="doMyId Logo"
+                  class="mb-4 rounded mix-blend-multiply"
+                />
+              </div>
+              <h4 class="font-bold text-center">Masuk</h4>
+              <form class="mt-4 space-y-3">
+                <label class="input input-bordered flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16"
+                    fill="currentColor"
+                    class="w-4 h-4 opacity-70"
+                  >
+                    <path
+                      d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
+                    />
+                  </svg>
+                  <input type="text" class="grow" placeholder="Username" />
+                </label>
+                <label class="input input-bordered flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16"
+                    fill="currentColor"
+                    class="w-4 h-4 opacity-70"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <input type="password" class="grow" value="password" />
+                </label>
+                <button type="submit" class="w-full btn btn-primary">
+                  Login
+                </button>
+              </form>
+              <div class="mt-3 text-center">
+                <a href="#" class="text-sky-500">Lupa Password ?</a>
+                <p>
+                  Info ITB Account
+                  <a href="#" class="text-sky-500">Klik ini.</a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <input
+            type="radio"
+            name="my_tabs_2"
+            role="tab"
+            class="tab"
+            aria-label="QR"
+          />
+          <div
+            role="tabpanel"
+            class="tab-content bg-base-100 border-base-300 rounded-box p-6"
+          >
+            <img
+              src="./assets/images/qr-code.png"
+              alt="qr-code example"
+              class="mb-4 rounded"
+              width="400px"
+            />
+          </div>
         </div>
       </div>
 
       <!-- Panduan -->
-      <ol class="space-y-6 w-3/4 lg:w-1/2 lg:px-8 order-2 md:order-1">
+      <ol
+        class="space-y-6 w-3/4 lg:w-1/2 lg:px-8 order-2 md:order-1 scale-[0.9]"
+      >
         <li class="space-y-[0.7rem]">
           <h4 class="font-bold text-xl">Layanan Login ITB</h4>
           <p class="text-justify">
