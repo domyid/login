@@ -85,17 +85,13 @@
             role="tab"
             class="tab"
             aria-label="QR"
+            checked
           />
           <div
             role="tabpanel"
             class="tab-content bg-base-100 border-base-300 rounded-box p-6"
           >
-            <img
-              src="./assets/images/qr-code.png"
-              alt="qr-code example"
-              class="mb-4 rounded"
-              width="400px"
-            />
+            <div id="qrCodeContainer"></div>
           </div>
         </div>
       </div>
@@ -143,5 +139,7 @@
         </li>
       </ol>
     </div>
+
+    <script src="./index.js" type="module"></script>
   </body>
 </html>
