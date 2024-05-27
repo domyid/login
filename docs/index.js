@@ -1,5 +1,6 @@
 import qrcode from "https://cdn.skypack.dev/qrcode-generator-es6";
 
+
  function makeQrCode(text, size) {
    const qrc = new qrcode(0, "H");
    qrc.addData(text);
@@ -19,5 +20,9 @@ import qrcode from "https://cdn.skypack.dev/qrcode-generator-es6";
  }
 
  document.addEventListener("DOMContentLoaded", function () {
-   makeQrCode("https://github.com", 350);
+   makeQrCode("https://wa.me/6285314267742?text=missyouuu", 350);
  });
+
+
+
+ 

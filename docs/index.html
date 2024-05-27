@@ -7,6 +7,7 @@
     <title>Login - SSO ITB</title>
   </head>
   <body class="bg-base-200 flex items-center justify-center lg:h-screen">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <div
       class="flex items-center lg:items-stretch space-y-3 lg:space-y-0 flex-col lg:flex-row lg:justify-around lg:w-3/4"
     >
@@ -28,15 +29,41 @@
             class="tab-content bg-base-100 border-base-300 rounded-box md:p-6"
           >
             <div class="flex justify-center flex-col p-8 w-full">
+              <!-- Logo -->
               <div class="flex flex-col items-center">
                 <img
                   src="./assets/images/logo.png"
                   alt="doMyId Logo"
                   class="mb-4 rounded mix-blend-multiply"
                 />
-                <h4 class="font-bold">Masuk</h4>
               </div>
-              <form class="mt-4 space-y-3">
+              <!-- Logo -->
+
+              <div class="flex flex-wrap w-full justify-between">
+                <div
+                  id="g_id_onload"
+                  data-client_id="239713755402-4hr2cva377m43rsqs2dk0c7f7cktfeph.apps.googleusercontent.com"
+                  data-callback="handleCredentialResponse"
+                ></div>
+                <!-- <div class="g_id_signin btn" data-type="standard"></div> -->
+
+                <button data-type="standard" class="btn g_id_signin bg-white">
+                  Google
+                </button>
+                <button class="btn bg-white">
+                  <img
+                    width="16"
+                    alt="Github logo"
+                    src="./assets/images/github-logo.svg"
+                  />
+                  Github
+                </button>
+              </div>
+
+              <div class="divider">Or continue with</div>
+
+              <!-- Form -->
+              <form class="space-y-3">
                 <label class="input input-bordered flex items-center gap-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -69,6 +96,7 @@
                   Login
                 </button>
               </form>
+              <!-- Form -->
               <div class="mt-3 text-center">
                 <a href="#" class="text-sky-500">Lupa Password ?</a>
                 <p>
@@ -85,7 +113,6 @@
             role="tab"
             class="tab"
             aria-label="QR"
-            checked
           />
           <div
             role="tabpanel"
