@@ -3,16 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="google-signin-client_id"
-      content="239713755402-4hr2cva377m43rsqs2dk0c7f7cktfeph.apps.googleusercontent.com"
-    />
     <link href="./output.css" rel="stylesheet" />
     <title>Login - SSO ITB</title>
-
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
   </head>
   <body class="bg-base-200 flex items-center justify-center lg:h-screen">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <div
       class="flex items-center lg:items-stretch space-y-3 lg:space-y-0 flex-col lg:flex-row lg:justify-around lg:w-3/4"
     >
@@ -44,16 +39,35 @@
               </div>
               <!-- Logo -->
 
-              <div class="flex flex-wrap w-full justify-between">
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                <button class="btn bg-white">
+              <div class="flex flex-wrap w-full justify-center">
+                <!-- Google Sign In -->
+                <div
+                  id="g_id_onload"
+                  data-client_id="239713755402-4hr2cva377m43rsqs2dk0c7f7cktfeph.apps.googleusercontent.com"
+                  data-context="signin"
+                  data-ux_mode="popup"
+                  data-login_uri="https://www.do.my.id/login/"
+                  data-auto_prompt="false"
+                ></div>
+
+                <div
+                  class="g_id_signin"
+                  data-type="standard"
+                  data-shape="rectangular"
+                  data-theme="outline"
+                  data-text="signin"
+                  data-size="large"
+                  data-logo_alignment="left"
+                ></div>
+                <!-- Google Sign In -->
+                <!-- <button class="btn bg-white">
                   <img
                     width="16"
                     alt="Github logo"
                     src="./assets/images/github-logo.svg"
                   />
                   Github
-                </button>
+                </button> -->
               </div>
 
               <div class="divider">Or continue with</div>
