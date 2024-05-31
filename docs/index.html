@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="pastel">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./output.css" rel="stylesheet" />
     <title>Login - SSO ITB</title>
   </head>
-  <body class="bg-base-200 flex items-center justify-center lg:h-screen">
+  <body class="bg-base-300 flex items-center justify-center lg:h-screen">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
+
     <div
       class="flex items-center lg:items-stretch space-y-3 lg:space-y-0 flex-col lg:flex-row lg:justify-around lg:w-3/4"
     >
@@ -128,7 +129,7 @@
             role="tabpanel"
             class="tab-content bg-base-100 border-base-300 rounded-box p-6"
           >
-            <div id="qrCodeContainer"></div>
+            <div id="qrCodeContainer" class="max-w-sm"></div>
           </div>
         </div>
       </div>
@@ -173,6 +174,75 @@
             Demi keamanan, mohon selalu logout dari login.itb.ac.id dan
             mematikan browser jika telah selesai mengakses layanan internet ITB.
           </p>
+        </li>
+        <li>
+          <!-- Theme Controller Toggle -->
+          <div class="dropdown dropdown-right dropdown-end">
+            <div tabindex="0" role="button" class="btn m-1">
+              Theme
+              <svg
+                width="12px"
+                height="12px"
+                class="h-2 w-2 fill-current opacity-60 inline-block"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 2048 2048"
+              >
+                <path
+                  d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"
+                ></path>
+              </svg>
+            </div>
+            <ul
+              tabindex="0"
+              class="dropdown-content z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-52"
+            >
+              <li>
+                <input
+                  type="radio"
+                  name="theme-dropdown"
+                  class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+                  aria-label="Default"
+                  value="default"
+                />
+              </li>
+              <li>
+                <input
+                  type="radio"
+                  name="theme-dropdown"
+                  class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+                  aria-label="Retro"
+                  value="retro"
+                />
+              </li>
+              <li>
+                <input
+                  type="radio"
+                  name="theme-dropdown"
+                  class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+                  aria-label="Cyberpunk"
+                  value="cyberpunk"
+                />
+              </li>
+              <li>
+                <input
+                  type="radio"
+                  name="theme-dropdown"
+                  class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+                  aria-label="Valentine"
+                  value="valentine"
+                />
+              </li>
+              <li>
+                <input
+                  type="radio"
+                  name="theme-dropdown"
+                  class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+                  aria-label="Aqua"
+                  value="aqua"
+                />
+              </li>
+            </ul>
+          </div>
         </li>
       </ol>
     </div>
