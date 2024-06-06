@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="pastel">
+<html data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,6 +8,74 @@
   </head>
   <body class="bg-base-300 flex items-center justify-center lg:h-screen">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <!-- Theme Controller Toggle -->
+    <div class="dropdown dropdown-bottom dropdown-end absolute top-0 right-0">
+      <div tabindex="0" role="button" class="btn m-1">
+        Theme
+        <svg
+          width="12px"
+          height="12px"
+          class="h-2 w-2 fill-current opacity-60 inline-block"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 2048 2048"
+        >
+          <path
+            d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"
+          ></path>
+        </svg>
+      </div>
+      <ul
+        tabindex="0"
+        class="dropdown-content z-[999] p-2 shadow-2xl bg-base-300 rounded-box w-52"
+      >
+        <li>
+          <input
+            type="radio"
+            name="theme-dropdown"
+            class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+            aria-label="Default"
+            value="default"
+          />
+        </li>
+        <li>
+          <input
+            type="radio"
+            name="theme-dropdown"
+            class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+            aria-label="Retro"
+            value="retro"
+          />
+        </li>
+        <li>
+          <input
+            type="radio"
+            name="theme-dropdown"
+            class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+            aria-label="Lofi"
+            value="lofi"
+          />
+        </li>
+        <li>
+          <input
+            type="radio"
+            name="theme-dropdown"
+            class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+            aria-label="Pastel"
+            value="pastel"
+          />
+        </li>
+        <li>
+          <input
+            type="radio"
+            name="theme-dropdown"
+            class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
+            aria-label="Winter"
+            value="winter"
+          />
+        </li>
+      </ul>
+    </div>
 
     <div
       class="flex items-center lg:items-stretch space-y-3 lg:space-y-0 flex-col lg:flex-row lg:justify-around lg:w-3/4"
@@ -137,7 +205,7 @@
 
       <!-- Panduan -->
       <ol
-        class="space-y-6 w-3/4 lg:w-1/2 lg:px-8 order-2 md:order-1 scale-[0.9]"
+        class="space-y-6 w-3/4 lg:w-1/2 lg:px-8 order-2 md:order-1 scale-[0.8]"
       >
         <li class="space-y-[0.7rem]">
           <h4 class="font-bold text-xl">Layanan Login ITB</h4>
@@ -175,75 +243,6 @@
             Demi keamanan, mohon selalu logout dari login.itb.ac.id dan
             mematikan browser jika telah selesai mengakses layanan internet ITB.
           </p>
-        </li>
-        <li>
-          <!-- Theme Controller Toggle -->
-          <div class="dropdown dropdown-right dropdown-end">
-            <div tabindex="0" role="button" class="btn m-1">
-              Theme
-              <svg
-                width="12px"
-                height="12px"
-                class="h-2 w-2 fill-current opacity-60 inline-block"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 2048 2048"
-              >
-                <path
-                  d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"
-                ></path>
-              </svg>
-            </div>
-            <ul
-              tabindex="0"
-              class="dropdown-content z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-52"
-            >
-              <li>
-                <input
-                  type="radio"
-                  name="theme-dropdown"
-                  class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-                  aria-label="Default"
-                  value="default"
-                />
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  name="theme-dropdown"
-                  class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-                  aria-label="Retro"
-                  value="retro"
-                />
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  name="theme-dropdown"
-                  class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-                  aria-label="Cyberpunk"
-                  value="cyberpunk"
-                />
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  name="theme-dropdown"
-                  class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-                  aria-label="Valentine"
-                  value="valentine"
-                />
-              </li>
-              <li>
-                <input
-                  type="radio"
-                  name="theme-dropdown"
-                  class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-                  aria-label="Aqua"
-                  value="aqua"
-                />
-              </li>
-            </ul>
-          </div>
         </li>
       </ol>
     </div>
