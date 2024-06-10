@@ -3,6 +3,7 @@ import { QrCodeElement } from "./QrCodeElement";
 import GoogleSignInButton from "./GoogleSignInButton";
 import LoginForm from "./LoginForm";
 import { useAuth } from "../utils/AuthContext";
+import logo from "../assets/logo.png";
 
 const Tabs = () => {
   const { logIn } = useAuth();
@@ -25,7 +26,7 @@ const Tabs = () => {
           {/* Logo */}
           <div className="flex flex-col items-center">
             <img
-              src="/logo.png"
+              src={logo}
               alt="doMyId Logo"
               className="mb-4 rounded mix-blend-multiply"
             />
