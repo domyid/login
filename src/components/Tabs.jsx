@@ -25,7 +25,7 @@ const Tabs = () => {
           {/* Logo */}
           <div className="flex flex-col items-center">
             <img
-              src="logo.png"
+              src="/logo.png"
               alt="doMyId Logo"
               className="mb-4 rounded mix-blend-multiply"
             />
