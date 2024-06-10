@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
-// Components
 import Tabs from "../components/Tabs";
 import Text from "../components/Text";
 import ThemeController from "../components/ThemeController";
+import { useAuth } from "../utils/AuthContext";
 
-const Login = ({ onSuccess }) => {
+const Login = () => {
   const navigate = useNavigate();
+  const { logIn } = useAuth();
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -19,14 +19,14 @@ const Login = ({ onSuccess }) => {
     window.handleCredentialResponse = (response) => {
       console.log("Encoded JWT ID token: " + response.credential);
       // Lakukan validasi token di backend Anda dan dapatkan informasi pengguna
-      onSuccess();
+      logIn();
       navigate("/dashboard");
     };
 
     return () => {
       document.body.removeChild(script);
     };
-  }, [navigate, onSuccess]);
+  }, [navigate, logIn]);
 
   return (
     <div className="bg-base-300 flex items-center justify-center lg:h-screen">

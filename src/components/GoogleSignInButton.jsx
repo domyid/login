@@ -1,6 +1,6 @@
 import React from "react";
 
-const GoogleSignInButton = () => {
+const GoogleSignInButton = ({ onSuccess }) => {
   return (
     <>
       <div
