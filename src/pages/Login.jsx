@@ -6,7 +6,7 @@ import Tabs from "../components/Tabs";
 import Text from "../components/Text";
 import ThemeController from "../components/ThemeController";
 
-const Login = () => {
+const Login = ({ onSuccess }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,13 +19,15 @@ const Login = () => {
     window.handleCredentialResponse = (response) => {
       console.log("Encoded JWT ID token: " + response.credential);
       // Lakukan validasi token di backend Anda dan dapatkan informasi pengguna
+      onSuccess();
       navigate("/dashboard");
     };
 
     return () => {
       document.body.removeChild(script);
     };
-  }, [navigate]);
+  }, [navigate, onSuccess]);
+
   return (
     <div className="bg-base-300 flex items-center justify-center lg:h-screen">
       <ThemeController />

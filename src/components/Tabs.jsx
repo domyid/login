@@ -2,8 +2,11 @@ import React from "react";
 import { QrCodeElement } from "./QrCodeElement";
 import GoogleSignInButton from "./GoogleSignInButton";
 import LoginForm from "./LoginForm";
+import { useAuth } from "../utils/AuthContext";
 
 const Tabs = () => {
+  const { logIn } = useAuth();
+
   return (
     <div role="tablist" className="tabs tabs-lifted">
       <input
@@ -30,7 +33,7 @@ const Tabs = () => {
           {/* Logo */}
 
           <div className="flex flex-wrap w-full justify-center">
-            <GoogleSignInButton />
+            <GoogleSignInButton onSuccess={logIn} />
           </div>
 
           <div className="divider">Or continue with</div>
