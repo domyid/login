@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Components
 import Tabs from "../components/Tabs";
 import Text from "../components/Text";
 import ThemeController from "../components/ThemeController";
 
-export const Login = () => {
+const Login = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://accounts.google.com/gsi/client";
@@ -13,11 +16,16 @@ export const Login = () => {
     script.defer = true;
     document.body.appendChild(script);
 
+    window.handleCredentialResponse = (response) => {
+      console.log("Encoded JWT ID token: " + response.credential);
+      // Lakukan validasi token di backend Anda dan dapatkan informasi pengguna
+      navigate("/dashboard");
+    };
+
     return () => {
       document.body.removeChild(script);
     };
-  }, []);
-
+  }, [navigate]);
   return (
     <div className="bg-base-300 flex items-center justify-center lg:h-screen">
       <ThemeController />
@@ -30,3 +38,5 @@ export const Login = () => {
     </div>
   );
 };
+
+export default Login;

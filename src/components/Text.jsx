@@ -28,9 +28,9 @@ const Text = () => {
         <h4 className="font-bold text-xl">Lupa Password</h4>
         <p>
           Jika lupa password,
-          <a href="#" target="_blank" className="text-sky-500 underline">
+          <button target="_blank" className="text-sky-500 underline">
             silahkan klik link berikut
-          </a>
+          </button>
           .
         </p>
       </li>
