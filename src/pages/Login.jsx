@@ -17,7 +17,7 @@ const Login = () => {
     document.body.appendChild(script);
 
     window.handleCredentialResponse = async (response) => {
-      console.log("Encoded JWT ID token: " + response.credential);
+      console.log(response);
 
       // Kirim token ke backend untuk validasi dan mendapatkan informasi pengguna
       const res = await fetch(
