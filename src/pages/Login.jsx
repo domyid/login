@@ -33,6 +33,7 @@ const Login = () => {
 
       if (res.ok) {
         const userInfo = await res.json();
+        console.log(userInfo);
         logIn(userInfo);
         navigate("/dashboard");
       } else {
