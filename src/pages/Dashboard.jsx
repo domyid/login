@@ -20,11 +20,11 @@ const Dashboard = () => {
     //   </button>
     // </div>
     <div class="hero min-h-screen bg-base-200">
-      <div class="hero-content flex-col lg:flex-row">
+      <div class="hero-content text-center">
         {user && (
-          <div className="profile">
-            <h1 class="text-5xl font-bold">Welcome, {user.name}</h1>
-            <p>
+          <div className="max-w-md">
+            <h1 className="text-5xl font-bold">Welcome, {user.name}</h1>
+            <p className="py-6">
               <strong>Email:</strong> {user.email}
             </p>
             <img
