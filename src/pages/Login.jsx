@@ -16,11 +16,28 @@ const Login = () => {
     script.defer = true;
     document.body.appendChild(script);
 
-    window.handleCredentialResponse = (response) => {
+    window.handleCredentialResponse = async (response) => {
       console.log("Encoded JWT ID token: " + response.credential);
-      // Lakukan validasi token di backend Anda dan dapatkan informasi pengguna
-      logIn();
-      navigate("/dashboard");
+
+      // Kirim token ke backend untuk validasi dan mendapatkan informasi pengguna
+      const res = await fetch(
+        "https://asia-southeast2-awangga.cloudfunctions.net/domyid/auth/users",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ token: response.credential }),
+        }
+      );
+
+      if (res.ok) {
+        const userInfo = await res.json();
+        logIn(userInfo);
+        navigate("/dashboard");
+      } else {
+        console.error("Login failed");
+      }
     };
 
     return () => {
