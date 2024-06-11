@@ -46,7 +46,7 @@ const Login = () => {
   return (
     <div className="bg-base-300 flex items-center justify-center lg:h-screen">
       <ThemeController />
-      <div className="flex items-center lg:items-stretch space-y-3 lg:space-y-0 flex-col lg:flex-row lg:justify-around lg:w-3/4">
+      <div className="flex items-center lg:items-stretch space-y-3 space-x-3 lg:space-y-0 flex-col lg:flex-row lg:justify-around lg:w-3/4">
         <div className="flex justify-center items-center mt-8 lg:mt-0 order-1 lg:order-2 w-3/4 lg:w-1/2">
           <Tabs />
         </div>

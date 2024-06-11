@@ -9,7 +9,7 @@ const Tabs = () => {
   const { logIn } = useAuth();
 
   return (
-    <div role="tablist" className="tabs tabs-lifted">
+    <div role="tablist" className="tabs tabs-lifted ">
       <input
         type="radio"
         name="my_tabs_2"
@@ -20,7 +20,7 @@ const Tabs = () => {
       />
       <div
         role="tabpanel"
-        className="tab-content bg-base-100 border-base-300 rounded-box md:p-6"
+        className="tab-content card-body bg-base-100 border-base-300 rounded-box md:p-6"
       >
         <div className="flex justify-center flex-col p-8 w-full">
           {/* Logo */}
@@ -33,21 +33,13 @@ const Tabs = () => {
           </div>
           {/* Logo */}
 
-          <div className="flex flex-wrap w-full justify-center">
+          <div className="flex flex-wrap w-full justify-center p-3">
             <GoogleSignInButton onSuccess={logIn} />
           </div>
 
           <div className="divider">Or continue with</div>
 
           <LoginForm />
-
-          <div className="mt-3 text-center">
-            <button className="text-sky-500">Lupa Password ?</button>
-            <p>
-              Info ITB Account
-              <button className="text-sky-500">Klik ini.</button>
-            </p>
-          </div>
         </div>
       </div>
 
