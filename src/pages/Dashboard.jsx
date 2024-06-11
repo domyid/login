@@ -5,19 +5,41 @@ const Dashboard = () => {
   const { user, logOut } = useAuth();
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
-      {user && (
-        <div className="profile">
-          <h2 className="text-xl mb-2">Welcome, {user.name}</h2>
-          <p>
-            <strong>Email:</strong> {user.email}
-          </p>
+    // <div className="container mx-auto p-4">
+    //   <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
+    //   {user && (
+    //     <div className="profile">
+    //       <h2 className="text-xl mb-2">Welcome, {user.name}</h2>
+    //       <p>
+    //         <strong>Email:</strong> {user.email}
+    //       </p>
+    //     </div>
+    //   )}
+    //   <button onClick={logOut} className="mt-4 btn btn-primary">
+    //     Log Out
+    //   </button>
+    // </div>
+    <div class="hero min-h-screen bg-base-200">
+      <div class="hero-content flex-col lg:flex-row">
+        {user && (
+          <div className="profile">
+            <h1 class="text-5xl font-bold">Welcome, {user.name}</h1>
+            <p>
+              <strong>Email:</strong> {user.email}
+            </p>
+            <img
+              src={user.picture}
+              alt={user.name}
+              className="max-w-sm rounded-lg shadow-2xl"
+            />
+          </div>
+        )}
+        <div>
+          <button onClick={logOut} className="mt-4 btn btn-primary">
+            Log Out
+          </button>
         </div>
-      )}
-      <button onClick={logOut} className="mt-4 btn btn-primary">
-        Log Out
-      </button>
+      </div>
     </div>
   );
 };
