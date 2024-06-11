@@ -19,27 +19,24 @@ const Dashboard = () => {
     //     Log Out
     //   </button>
     // </div>
-    <div class="hero min-h-screen bg-base-200">
-      <div class="hero-content text-center">
-        {user && (
-          <div className="max-w-md">
-            <h1 className="text-5xl font-bold">Welcome, {user.name}</h1>
-            <p className="py-6">
-              <strong>Email:</strong> {user.email}
-            </p>
-            <img
-              src={user.picture}
-              alt={user.name}
-              className="max-w-sm rounded-lg shadow-2xl"
-            />
-          </div>
-        )}
-        <div>
-          <button onClick={logOut} className="mt-4 btn btn-primary">
-            Log Out
-          </button>
+    <div className="flex flex-col justify-center items-center min-h-screen bg-base-200">
+      {user && (
+        <div className="max-w-md">
+          <h1 className="text-5xl font-bold">Welcome, {user.name}</h1>
+          <p className="py-6">
+            <strong>Email:</strong> {user.email}
+          </p>
+          <img
+            src={user.picture}
+            alt={user.name}
+            className="max-w-sm rounded-lg shadow-2xl"
+          />
         </div>
-      </div>
+      )}
+
+      <button onClick={logOut} className="mt-4 btn btn-primary">
+        Log Out
+      </button>
     </div>
   );
 };
