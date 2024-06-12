@@ -16,8 +16,6 @@ export const AuthProvider = ({ children }) => {
       // Assume the user is authenticated if the cookie is present
       setIsAuthenticated(true);
       // Optionally, you could also fetch user info from the server here
-      const userInfo = JSON.parse(localStorage.getItem("user_info"));
-      setUser(userInfo);
     }
   }, []);
 
@@ -29,14 +27,12 @@ export const AuthProvider = ({ children }) => {
       sameSite: "Strict",
       secure: true,
     });
-    localStorage.setItem("user_info", JSON.stringify(userInfo));
   };
 
   const logOut = () => {
     setIsAuthenticated(false);
     setUser(null);
     Cookies.remove("user_login");
-    localStorage.removeItem("user_info");
     Swal.fire({
       icon: "success",
       title: "Logged Out",
