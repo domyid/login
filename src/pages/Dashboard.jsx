@@ -1,36 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../utils/AuthContext";
+import ThemeController from "../components/ThemeController";
 
 const Dashboard = () => {
   const { user, logOut } = useAuth();
+  const [defaultUser, setDefaultUser] = useState(null);
+
+  useEffect(() => {
+    if (!user) {
+      setDefaultUser({
+        _id: { $oid: "6667fdb2536e533efd3d99d9" },
+        email: "udaffa09@gmail.com",
+        name: "DapNotSad",
+        googleprofilepicture:
+          "https://lh3.googleusercontent.com/a/ACg8ocJ0jjm-R3lJE6FSXk5kUSn7TQxaNtM-cGqGKMZSMRwmjPZQkouP=s96-c",
+      });
+    }
+  }, [user]);
+
+  const displayedUser = user || defaultUser;
 
   return (
-    // <div className="container mx-auto p-4">
-    //   <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
-    //   {user && (
-    //     <div className="profile">
-    //       <h2 className="text-xl mb-2">Welcome, {user.name}</h2>
-    //       <p>
-    //         <strong>Email:</strong> {user.email}
-    //       </p>
-    //     </div>
-    //   )}
-    //   <button onClick={logOut} className="mt-4 btn btn-primary">
-    //     Log Out
-    //   </button>
-    // </div>
     <div className="flex flex-col justify-center items-center min-h-screen bg-base-200">
-      {user && (
-        <div className="max-w-md">
-          <h1 className="text-5xl font-bold">Welcome, {user.name}</h1>
-          <p className="py-6">
-            <strong>Email:</strong> {user.email}
+      <ThemeController />
+      {displayedUser && (
+        <div className="max-w-md flex flex-col justify-center items-center text-center">
+          <h1 className="text-5xl font-extralight">
+            Welcome,{" "}
+            <span className="font-extrabold">{displayedUser.name}</span>
+          </h1>
+          <p className="mt-5 mb-5 badge badge-primary">
+            <strong className="mr-3">Email:</strong> {displayedUser.email}
           </p>
-          <img
-            src={user.picture}
-            alt={user.name}
-            className="max-w-sm rounded-lg shadow-2xl"
-          />
+
+          <div class="avatar">
+            <div class="w-24 shadow-2xl rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              <img
+                src={displayedUser.googleprofilepicture}
+                alt={displayedUser.name}
+              />
+            </div>
+          </div>
         </div>
       )}
 
