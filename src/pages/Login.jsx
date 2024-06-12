@@ -39,19 +39,12 @@ const Login = () => {
       } else if (res.status === 401) {
         const errorMsg = await res.text();
         console.error("Login failed:", errorMsg);
-        if (
-          errorMsg.includes(
-            "Please scan the QR code to provide your phone number"
-          )
-        ) {
-          navigate("/scanqr");
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: "Login Failed",
-            text: errorMsg,
-          });
-        }
+        await Swal.fire({
+          icon: "error",
+          title: "Login Failed",
+          text: errorMsg,
+        });
+        navigate("/scanqr");
       } else {
         const errorMsg = await res.text();
         console.error("Login failed for an unknown reason");
