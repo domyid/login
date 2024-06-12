@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = Cookies.get("user_login");
+    const token = Cookies.get("login");
     if (token) {
       // Assume the user is authenticated if the cookie is present
       setIsAuthenticated(true);
@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
   const logIn = (userInfo) => {
     setIsAuthenticated(true);
     setUser(userInfo);
-    Cookies.set("user_login", userInfo.token, {
+    Cookies.set("login", userInfo.token, {
       expires: 1,
       sameSite: "Strict",
       secure: true,
@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
   const logOut = () => {
     setIsAuthenticated(false);
     setUser(null);
-    Cookies.remove("user_login");
+    Cookies.remove("login");
     Swal.fire({
       icon: "success",
       title: "Logged Out",
