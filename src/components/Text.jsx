@@ -42,12 +42,16 @@ const Text = () => {
     //     </p>
     //   </li>
     // </ol>
-    <div className="flex flex-col justify-center w-3/4 md:order-1 order-2">
-      <h1 class="text-5xl font-bold text-center lg:text-left">Login now!</h1>
-      <p class="py-6">
-        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-        excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a
-        id nisi.
+    <div className="flex flex-col justify-center w-3/4 lg:max-w-sm md:order-1 order-2">
+      <h1 className="text-5xl font-bold text-center lg:text-left">
+        do.my.id (DoMyIkaDo)
+      </h1>
+      <p className="py-6 text-justify">
+        Indonesia, rich in culture, ethnicity, and language, boasts a unique
+        work ethic and communication style. Wrapped in the spirit of mutual
+        cooperation, respect, and high tolerance, DoMyIkaDo embodies these
+        values. While you may have tried various foreign products, don't forget
+        the legendary TV ad's words: "Love Indonesian products."
       </p>
     </div>
   );

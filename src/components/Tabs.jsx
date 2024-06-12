@@ -20,7 +20,7 @@ const Tabs = () => {
       />
       <div
         role="tabpanel"
-        className="tab-content card-body bg-base-100 border-base-300 rounded-box md:p-6"
+        className="tab-content md:card-body bg-base-100 border-base-300 rounded-box md:p-6"
       >
         <div className="flex justify-center flex-col p-8 w-full">
           {/* Logo */}
