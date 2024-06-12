@@ -44,7 +44,7 @@ const Login = () => {
             "Please scan the QR code to provide your phone number"
           )
         ) {
-          window.location.href = "https://www.do.my.id/signin/";
+          navigate("/scanqr");
         } else {
           Swal.fire({
             icon: "error",
