@@ -4,6 +4,7 @@ import Tabs from "../components/Tabs";
 import Text from "../components/Text";
 import ThemeController from "../components/ThemeController";
 import { useAuth } from "../utils/AuthContext";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,10 +32,33 @@ const Login = () => {
 
       if (res.ok) {
         const userInfo = await res.json();
+        userInfo.token = response.credential; // Save token to userInfo
         logIn(userInfo);
         navigate("/dashboard");
+      } else if (res.status === 401) {
+        const errorMsg = await res.text();
+        console.error("Login failed:", errorMsg);
+        if (
+          errorMsg.includes(
+            "Please scan the QR code to provide your phone number"
+          )
+        ) {
+          window.location.href = "https://www.do.my.id/signin/";
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Login Failed",
+            text: errorMsg,
+          });
+        }
       } else {
-        console.error("Login failed");
+        const errorMsg = await res.text();
+        console.error("Login failed for an unknown reason");
+        Swal.fire({
+          icon: "error",
+          title: "Login Failed",
+          text: errorMsg,
+        });
       }
     };
 

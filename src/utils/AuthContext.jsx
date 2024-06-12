@@ -1,5 +1,7 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
+import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const AuthContext = createContext();
 
@@ -8,15 +10,36 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const token = Cookies.get("user_login");
+    if (token) {
+      // Assume the user is authenticated if the cookie is present
+      setIsAuthenticated(true);
+      // Optionally, you could also fetch user info from the server here
+    }
+  }, []);
+
   const logIn = (userInfo) => {
     setIsAuthenticated(true);
     setUser(userInfo);
+    Cookies.set("user_login", userInfo.token, {
+      expires: 1,
+      sameSite: "Strict",
+      secure: true,
+    });
   };
 
   const logOut = () => {
     setIsAuthenticated(false);
     setUser(null);
-    navigate("/");
+    Cookies.remove("user_login");
+    Swal.fire({
+      icon: "success",
+      title: "Logged Out",
+      text: "You have been successfully logged out",
+    }).then(() => {
+      navigate("/");
+    });
   };
 
   return (
