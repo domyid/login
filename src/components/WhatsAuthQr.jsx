@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
+import { useAuth } from "../utils/AuthContext";
 
 const WhatsAuthQR = () => {
+  const { user } = useAuth();
+
   useEffect(() => {
     const script1 = document.createElement("script");
     script1.src = "https://cdn.jsdelivr.net/gh/whatsauth/js@0.2.1/whatsauth.js";
@@ -36,13 +39,23 @@ const WhatsAuthQR = () => {
       id="hasphonenumber"
       className="w-full h-screen bg-blue-100 flex items-center justify-center"
     >
-      <div className="w-96 bg-white rounded-xl">
-        <p className="font-bold text-center mb-4" id="useracclog">
-          Tap/Scan dengan{" "}
-          <a href="./camwab.jpg" target="_blank">
-            Camera WA
-          </a>
-        </p>
+      <div className="w-96 bg-white rounded-xl p-4">
+        {user && (
+          <div className="mb-4">
+            <h1 className="text-2xl font-bold text-center">
+              Welcome, {user.name}
+            </h1>
+            <p className="text-center">
+              <strong>Email:</strong> {user.email}
+            </p>
+            <img
+              src={user.picture}
+              alt={user.name}
+              className="max-w-sm rounded-lg shadow-2xl mx-auto"
+            />
+          </div>
+        )}
+
         <div className="flex justify-center mt-2 mb-4" id="whatsauthqr">
           <svg
             className="lds-microsoft"
@@ -220,11 +233,6 @@ const WhatsAuthQR = () => {
         </div>
         <p className="font-bold text-center mb-4" id="whatsauthcounter">
           counter
-        </p>
-        <p className="font-bold text-center mb-4" id="logs">
-          <a href="https://whatsauth.my.id">
-            WhatsAuth Free WhatsApp Notif, OTP, API Gateway Gratis
-          </a>
         </p>
       </div>
     </div>
