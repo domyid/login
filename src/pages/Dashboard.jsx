@@ -12,7 +12,7 @@ const Dashboard = () => {
         _id: { $oid: "6667fdb2536e533efd3d99d9" },
         email: "udaffa09@gmail.com",
         name: "DapNotSad",
-        googleprofilepicture:
+        picture:
           "https://lh3.googleusercontent.com/a/ACg8ocJ0jjm-R3lJE6FSXk5kUSn7TQxaNtM-cGqGKMZSMRwmjPZQkouP=s96-c",
       });
     }
@@ -35,10 +35,7 @@ const Dashboard = () => {
 
           <div class="avatar">
             <div class="w-24 shadow-2xl rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img
-                src={displayedUser.googleprofilepicture}
-                alt={displayedUser.name}
-              />
+              <img src={displayedUser.picture} alt={displayedUser.name} />
             </div>
           </div>
         </div>

@@ -18,6 +18,7 @@ const Login = () => {
     document.body.appendChild(script);
 
     window.handleCredentialResponse = async (response) => {
+      console.log(response);
       // Kirim token ke backend untuk validasi dan mendapatkan informasi pengguna
       const res = await fetch(
         "https://asia-southeast2-awangga.cloudfunctions.net/domyid/auth/users",
