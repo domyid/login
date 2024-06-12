@@ -6,33 +6,26 @@ const WhatsAuthQR = () => {
 
   useEffect(() => {
     const loadScripts = async () => {
-      const script1 = document.createElement("script");
-      script1.src =
-        "https://cdn.jsdelivr.net/gh/whatsauth/js@0.2.1/whatsauth.js";
-      script1.async = true;
-      document.body.appendChild(script1);
+      // Dynamic import of the script
+      try {
+        const { qrController, deleteCookie } = await import(
+          "https://cdn.jsdelivr.net/gh/whatsauth/js@0.2.1/whatsauth.js"
+        );
+        const { wauthparam } = await import(
+          "https://cdn.jsdelivr.net/gh/whatsauth/js@0.2.1/config.js"
+        );
 
-      const script2 = document.createElement("script");
-      script2.src = "https://cdn.jsdelivr.net/gh/whatsauth/js@0.2.1/config.js";
-      script2.async = true;
-      document.body.appendChild(script2);
-
-      script1.onload = () => {
-        script2.onload = () => {
-          if (window.wauthparam) {
-            window.wauthparam.auth_ws =
-              "d3NzOi8vYXBpLndhLm15LmlkL3dzL3doYXRzYXV0aC9wdWJsaWM=";
-            window.wauthparam.keyword =
-              "aHR0cHM6Ly93YS5tZS82Mjg5NTYwMTA2MDAwMD90ZXh0PXdoNHQ1YXV0aDA=";
-            window.wauthparam.tokencookiehourslifetime = 18;
-            window.wauthparam.redirect = "/auth";
-            window.deleteCookie(window.wauthparam.tokencookiename);
-            window.qrController(window.wauthparam);
-          } else {
-            console.error("wauthparam is not defined");
-          }
-        };
-      };
+        wauthparam.auth_ws =
+          "d3NzOi8vYXBpLndhLm15LmlkL3dzL3doYXRzYXV0aC9wdWJsaWM=";
+        wauthparam.keyword =
+          "aHR0cHM6Ly93YS5tZS82Mjg5NTYwMTA2MDAwMD90ZXh0PXdoNHQ1YXV0aDA=";
+        wauthparam.tokencookiehourslifetime = 18;
+        wauthparam.redirect = "/auth";
+        deleteCookie(wauthparam.tokencookiename);
+        qrController(wauthparam);
+      } catch (error) {
+        console.error("Error loading scripts:", error);
+      }
     };
 
     loadScripts();
