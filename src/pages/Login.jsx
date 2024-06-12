@@ -31,14 +31,14 @@ const Login = () => {
         }
       );
 
+      const userInfo = await res.json();
       if (res.ok) {
-        const userInfo = await res.json();
         userInfo.token = response.credential; // Save token to userInfo
         logIn(userInfo);
         navigate("/dashboard");
       } else if (res.status === 401) {
         const errorMsg = await res.text();
-        console.error("Login failed:", errorMsg);
+        logIn(userInfo);
         await Swal.fire({
           icon: "warning",
           title: "Login Failed",
