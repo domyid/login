@@ -40,7 +40,7 @@ const Login = () => {
         const errorMsg = await res.text();
         console.error("Login failed:", errorMsg);
         await Swal.fire({
-          icon: "error",
+          icon: "Warning",
           title: "Login Failed",
           text: errorMsg,
         });
