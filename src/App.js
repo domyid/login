@@ -20,14 +20,7 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-          <Route
-            path="/scanqr"
-            element={
-              <ProtectedRoute>
-                <WhatsAuthQR />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/scanqr" element={<WhatsAuthQR/>}/>
         </Routes>
       </AuthProvider>
     </Router>
