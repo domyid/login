@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import { AuthProvider } from "./utils/AuthContext";
 import ProtectedRoute from "./utils/ProtectedRoute";
+import WhatsAuthQR from "./components/WhatsAuthQr";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
               </ProtectedRoute>
             }
           />
+          <Route path="/scanqr" element={<WhatsAuthQR/>}/>
         </Routes>
       </AuthProvider>
     </Router>
