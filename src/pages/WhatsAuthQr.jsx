@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useAuth } from "../utils/AuthContext";
 import ThemeController from "../components/ThemeController";
+import UserInfo from "../components/UserInfo";
 
 const WhatsAuthQR = () => {
   const { user } = useAuth();
@@ -47,16 +48,7 @@ const WhatsAuthQR = () => {
       <div className="card w-96 bg-base-100 shadow-xl">
         {user ? (
           <div className="card-body max-w-md flex flex-col justify-center items-center text-center">
-            <h1 className="text-5xl font-extralight">
-              Welcome, <span className="font-extrabold">{user.name}</span>
-            </h1>
-            <p className="mt-5 mb-5 badge badge-primary">{user.email}</p>
-
-            <div class="avatar">
-              <div class="w-24 shadow-2xl rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <img src={user.picture} alt={user.name} />
-              </div>
-            </div>
+            <UserInfo data={user} />
             <p className="text-gray-700 mt-3">
               Please scan the QR code with your WhatsApp camera to provide your
               phone number.

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../utils/AuthContext";
 import ThemeController from "../components/ThemeController";
+import UserInfo from "../components/UserInfo";
 
 const Dashboard = () => {
   const { user, logOut } = useAuth();
@@ -25,19 +26,7 @@ const Dashboard = () => {
       <ThemeController />
       {displayedUser && (
         <div className="max-w-md flex flex-col justify-center items-center text-center">
-          <h1 className="text-5xl font-extralight">
-            Welcome,{" "}
-            <span className="font-extrabold">{displayedUser.name}</span>
-          </h1>
-          <p className="mt-5 mb-5 badge badge-primary">
-            <strong className="mr-3">Email:</strong> {displayedUser.email}
-          </p>
-
-          <div className="avatar">
-            <div className="w-24 shadow-2xl rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img src={displayedUser.picture} alt={displayedUser.name} />
-            </div>
-          </div>
+          <UserInfo data={displayedUser} />
         </div>
       )}
 
