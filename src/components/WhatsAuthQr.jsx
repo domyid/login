@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useAuth } from "../utils/AuthContext";
+import ThemeController from "./ThemeController";
 
 const WhatsAuthQR = () => {
   const { user } = useAuth();
@@ -40,34 +41,34 @@ const WhatsAuthQR = () => {
   return (
     <div
       id="hasphonenumber"
-      className="w-full min-h-screen bg-blue-50 flex items-center justify-center"
+      className="w-full min-h-screen bg-base-200 flex items-center justify-center py-10"
     >
-      <div className="w-96 bg-white rounded-xl p-6 shadow-lg">
+      <ThemeController />
+      <div className="card w-96 bg-base-100 shadow-xl">
         {user ? (
-          <div className="text-center">
-            <h1 className="text-2xl font-bold mb-2">Welcome, {user.name}</h1>
-            <p className="mt-5 mb-5 badge badge-primary">
-              <strong>Email:</strong> {user.email}
-            </p>
+          <div className="card-body max-w-md flex flex-col justify-center items-center text-center">
+            <h1 className="text-5xl font-extralight">
+              Welcome, <span className="font-extrabold">{user.name}</span>
+            </h1>
+            <p className="mt-5 mb-5 badge badge-primary">{user.email}</p>
 
-            <div class="w-24 shadow-2xl rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img
-                src={user.picture}
-                alt={user.name}
-                className="w-24 h-24 rounded-full mx-auto mb-4 shadow-2xl"
-              />
+            <div class="avatar">
+              <div class="w-24 shadow-2xl rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img src={user.picture} alt={user.name} />
+              </div>
             </div>
-
-            <p className="text-gray-700">
+            <p className="text-gray-700 mt-3">
               Please scan the QR code with your WhatsApp camera to provide your
               phone number.
             </p>
           </div>
         ) : (
-          <span className="loading loading-dots loading-lg"></span>
+          <div className="text-center">
+            <span className=" loading loading-dots loading-lg"></span>
+          </div>
         )}
 
-        <div className="flex justify-center mt-4 mb-4" id="whatsauthqr">
+        <div className="flex justify-center mb-4" id="whatsauthqr">
           <span className="loading loading-dots loading-lg"></span>
         </div>
         <p
