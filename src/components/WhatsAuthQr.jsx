@@ -43,7 +43,7 @@ const WhatsAuthQR = () => {
       className="w-full h-screen bg-blue-100 flex items-center justify-center"
     >
       <div className="w-96 bg-white rounded-xl p-4">
-        {user && (
+        {user ? (
           <div className="mb-4">
             <h1 className="text-2xl font-bold text-center">
               Welcome, {user.name}
@@ -57,6 +57,8 @@ const WhatsAuthQR = () => {
               className="max-w-sm rounded-lg shadow-2xl mx-auto"
             />
           </div>
+        ) : (
+          <p>Loading user information...</p>
         )}
 
         <div className="flex justify-center mt-2 mb-4" id="whatsauthqr">
