@@ -38,20 +38,20 @@ const Login = () => {
           logIn(userInfo);
           navigate("/dashboard");
         } else {
-          console.error("Login failed:", userInfo.message);
+          console.error("Login failed:", data.message);
           if (res.status === 401) {
             logIn(userInfo);
             await Swal.fire({
               icon: "warning",
               title: "Login Failed",
-              text: userInfo.message,
+              text: data.message,
             });
             navigate("/scanqr");
           } else {
             Swal.fire({
               icon: "error",
               title: "Login Failed",
-              text: userInfo.message,
+              text: data.message,
             });
           }
         }
