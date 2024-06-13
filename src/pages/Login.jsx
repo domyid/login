@@ -18,40 +18,48 @@ const Login = () => {
     document.body.appendChild(script);
 
     window.handleCredentialResponse = async (response) => {
-      console.log(response);
-      // Kirim token ke backend untuk validasi dan mendapatkan informasi pengguna
-      const res = await fetch(
-        "https://asia-southeast2-awangga.cloudfunctions.net/domyid/auth/users",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ token: response.credential }),
-        }
-      );
+      try {
+        const res = await fetch(
+          "https://asia-southeast2-awangga.cloudfunctions.net/domyid/auth/users",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ token: response.credential }),
+          }
+        );
 
-      const userInfo = await res.json();
-      if (res.ok) {
-        userInfo.token = response.credential; // Save token to userInfo
-        logIn(userInfo);
-        navigate("/dashboard");
-      } else if (res.status === 401) {
-        const errorMsg = await res.text();
-        logIn(userInfo);
-        await Swal.fire({
-          icon: "warning",
-          title: "Login Failed",
-          text: errorMsg,
-        });
-        navigate("/scanqr");
-      } else {
-        const errorMsg = await res.text();
-        console.error("Login failed for an unknown reason");
+        let userInfo;
+        if (res.ok) {
+          userInfo = await res.json();
+          userInfo.token = response.credential;
+          logIn(userInfo);
+          navigate("/dashboard");
+        } else {
+          const errorMsg = await res.text();
+          console.error("Login failed:", errorMsg);
+          if (res.status === 401) {
+            await Swal.fire({
+              icon: "warning",
+              title: "Login Failed",
+              text: errorMsg,
+            });
+            navigate("/scanqr");
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Login Failed",
+              text: errorMsg,
+            });
+          }
+        }
+      } catch (error) {
+        console.error("Error handling credential response:", error);
         Swal.fire({
           icon: "error",
           title: "Login Failed",
-          text: errorMsg,
+          text: "An error occurred while processing your login. Please try again.",
         });
       }
     };
