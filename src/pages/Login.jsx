@@ -35,7 +35,7 @@ const Login = () => {
         userInfo.token = response.credential; // Assign token
 
         if (res.ok) {
-          logIn(userInfo);
+          logIn(data);
           navigate("/dashboard");
         } else {
           console.error("Login failed:", data.message);

@@ -22,7 +22,6 @@ export const AuthProvider = ({ children }) => {
   const logIn = (userInfo) => {
     setIsAuthenticated(true);
     setUser(userInfo);
-    console.log(user);
 
     if (userInfo && userInfo.token) {
       Cookies.set("login", userInfo.token, {
