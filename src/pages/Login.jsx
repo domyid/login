@@ -30,28 +30,27 @@ const Login = () => {
           }
         );
 
-        let userInfo;
+        let userInfo = await res.json(); // Parse JSON response
+        userInfo.token = response.credential; // Assign token
+
         if (res.ok) {
-          userInfo = await res.json();
-          userInfo.token = response.credential;
           logIn(userInfo);
           navigate("/dashboard");
         } else {
-          const errorMsg = await res.text();
-          console.error("Login failed:", errorMsg);
+          console.error("Login failed:", userInfo.message);
           if (res.status === 401) {
             logIn(userInfo);
             await Swal.fire({
               icon: "warning",
               title: "Login Failed",
-              text: errorMsg.message,
+              text: userInfo.message,
             });
             navigate("/scanqr");
           } else {
             Swal.fire({
               icon: "error",
               title: "Login Failed",
-              text: errorMsg.message,
+              text: userInfo.message,
             });
           }
         }

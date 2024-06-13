@@ -22,10 +22,9 @@ export const AuthProvider = ({ children }) => {
   const logIn = (userInfo) => {
     setIsAuthenticated(true);
     setUser(userInfo);
-    let token = userInfo.token;
 
-    if (token) {
-      Cookies.set("login", token, {
+    if (userInfo && userInfo.token) {
+      Cookies.set("login", userInfo.token, {
         expires: 1,
         sameSite: "Strict",
         secure: true,
