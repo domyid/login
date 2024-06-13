@@ -30,7 +30,8 @@ const Login = () => {
           }
         );
 
-        let userInfo = await res.json(); // Parse JSON response
+        const data = await res.json(); // Parse JSON response
+        let userInfo = data.user; // Extract userInfo from the response
         userInfo.token = response.credential; // Assign token
 
         if (res.ok) {
