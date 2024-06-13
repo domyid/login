@@ -43,7 +43,7 @@ const Login = () => {
             await Swal.fire({
               icon: "warning",
               title: "Login Failed",
-              text: errorMsg,
+              text: errorMsg.message,
             });
             navigate("/scanqr");
           } else {
