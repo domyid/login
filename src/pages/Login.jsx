@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Tabs from "../components/Tabs";
+import LoginBox from "../components/LoginBox";
 import Text from "../components/Text";
 import ThemeController from "../components/ThemeController";
 import { useAuth } from "../utils/AuthContext";
@@ -71,11 +71,11 @@ const Login = () => {
   }, [navigate, logIn]);
 
   return (
-    <div className="bg-base-300 flex items-center justify-center lg:h-screen">
+    <div className="bg-base-200 flex items-center justify-center lg:h-screen">
       <ThemeController />
       <div className="flex items-center lg:items-stretch space-y-3 space-x-3 lg:space-y-0 flex-col lg:flex-row lg:justify-around lg:w-3/4">
         <div className="flex justify-center items-center mt-8 lg:mt-0 order-1 lg:order-2 w-3/4 lg:w-1/2">
-          <Tabs />
+          <LoginBox />
         </div>
         <Text />
       </div>

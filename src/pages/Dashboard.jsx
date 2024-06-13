@@ -33,8 +33,8 @@ const Dashboard = () => {
             <strong className="mr-3">Email:</strong> {displayedUser.email}
           </p>
 
-          <div class="avatar">
-            <div class="w-24 shadow-2xl rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+          <div className="avatar">
+            <div className="w-24 shadow-2xl rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
               <img src={displayedUser.picture} alt={displayedUser.name} />
             </div>
           </div>

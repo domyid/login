@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
 import { AuthProvider } from "./utils/AuthContext";
 import ProtectedRoute from "./utils/ProtectedRoute";
-import WhatsAuthQR from "./components/WhatsAuthQr";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import WhatsAuthQR from "./pages/WhatsAuthQr";
 
 const App = () => {
   return (

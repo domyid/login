@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useAuth } from "../utils/AuthContext";
-import ThemeController from "./ThemeController";
+import ThemeController from "../components/ThemeController";
 
 const WhatsAuthQR = () => {
   const { user } = useAuth();

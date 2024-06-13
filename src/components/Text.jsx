@@ -43,10 +43,13 @@ const Text = () => {
     //   </li>
     // </ol>
     <div className="flex flex-col justify-center w-3/4 lg:max-w-sm md:order-1 order-2">
-      <h1 className="text-5xl font-bold text-center lg:text-left">
+      <h1 className="text-5xl font-extrabold text-center lg:text-left">
         do.my.id (DoMyIkaDo)
       </h1>
-      <p className="py-6 text-justify">
+      <h2 className="text-2xl font-extralight py-6">
+        anti mainstream project management original made in Indonesia
+      </h2>
+      <p className="text-justify">
         Indonesia, rich in culture, ethnicity, and language, boasts a unique
         work ethic and communication style. Wrapped in the spirit of mutual
         cooperation, respect, and high tolerance, DoMyIkaDo embodies these

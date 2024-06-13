@@ -3,7 +3,7 @@ import React from "react";
 const ThemeController = () => {
   return (
     <div className="dropdown dropdown-bottom dropdown-end absolute top-0 right-0">
-      <div tabIndex="0" role="button" className="btn m-1">
+      <div tabIndex="0" role="button" className="btn m-1 bg-white">
         Theme
         <svg
           width="12px"
@@ -17,7 +17,7 @@ const ThemeController = () => {
       </div>
       <ul
         tabIndex="0"
-        className="dropdown-content z-[999] p-2 shadow-2xl bg-base-300 rounded-box w-52"
+        className="dropdown-content z-[999] p-2 shadow-2xl bg-white rounded-box w-52"
       >
         <li>
           <input
