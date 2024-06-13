@@ -33,6 +33,8 @@ const Login = () => {
         const data = await res.json(); // Parse JSON response
         let userInfo = data.user; // Extract userInfo from the response
         userInfo.token = response.credential; // Assign token
+        console.log("data: ", data);
+        console.log("userInfo: ", userInfo);
 
         if (res.ok) {
           logIn(data);
