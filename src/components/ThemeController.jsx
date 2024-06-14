@@ -2,8 +2,8 @@ import React from "react";
 
 const ThemeController = () => {
   return (
-    <div className="dropdown dropdown-bottom dropdown-end absolute top-0 right-0">
-      <div tabIndex="0" role="button" className="btn m-1 bg-white">
+    <div className="dropdown dropdown-bottom dropdown-end fixed top-0 right-0 z-[999]">
+      <div tabIndex="0" role="button" className="btn m-1 bg-white shadow-2xl">
         Theme
         <svg
           width="12px"

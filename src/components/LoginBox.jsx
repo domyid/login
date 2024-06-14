@@ -9,7 +9,7 @@ const LoginBox = () => {
 
   return (
     <div className="card flex justify-center flex-col p-8 w-full max-w-sm shadow-lg bg-base-100">
-      <div className="card-body">
+      <div className="md:card-body py-3 md:py-0">
         {/* Logo */}
         <div className="flex flex-col items-center">
           <img
