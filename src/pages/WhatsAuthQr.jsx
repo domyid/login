@@ -7,8 +7,9 @@ const WhatsAuthQR = () => {
   const { user } = useAuth();
 
   useEffect(() => {
+    let isMounted = true;
+
     const loadScripts = async () => {
-      // Dynamic import of the script
       try {
         const { qrController, deleteCookie } = await import(
           "https://cdn.jsdelivr.net/gh/whatsauth/js@0.2.1/whatsauth.js"
@@ -24,7 +25,17 @@ const WhatsAuthQR = () => {
         wauthparam.tokencookiehourslifetime = 18;
         wauthparam.redirect = "/auth";
         deleteCookie(wauthparam.tokencookiename);
-        qrController(wauthparam);
+
+        // Pengecekan keberadaan elemen sebelum memanggil qrController
+        if (
+          isMounted &&
+          document.getElementById("whatsauthqr") &&
+          document.getElementById("whatsauthcounter")
+        ) {
+          qrController(wauthparam);
+        } else {
+          console.error("Required elements for WhatsAuth not found.");
+        }
       } catch (error) {
         console.error("Error loading scripts:", error);
       }
@@ -33,6 +44,7 @@ const WhatsAuthQR = () => {
     loadScripts();
 
     return () => {
+      isMounted = false;
       document.body
         .querySelectorAll('script[src*="whatsauth"]')
         .forEach((script) => script.remove());
