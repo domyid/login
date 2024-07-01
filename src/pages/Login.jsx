@@ -46,7 +46,7 @@ const Login = () => {
               title: "Login Failed",
               text: data.message,
             });
-            navigate("/scanqr");
+            window.location.href = "https://www.do.my.id/signin/";
           } else {
             Swal.fire({
               icon: "error",
