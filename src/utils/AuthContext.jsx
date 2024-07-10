@@ -28,6 +28,7 @@ export const AuthProvider = ({ children }) => {
         expires: 1,
         sameSite: "Strict",
         secure: true,
+        domain: ".do.my.id", // Set the domain to allow access across subdomains
       });
     }
   };
@@ -35,7 +36,7 @@ export const AuthProvider = ({ children }) => {
   const logOut = () => {
     setIsAuthenticated(false);
     setUser(null);
-    Cookies.remove("login");
+    Cookies.remove("login", { domain: ".do.my.id" });
     Swal.fire({
       icon: "success",
       title: "Logged Out",
