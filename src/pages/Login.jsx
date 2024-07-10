@@ -33,11 +33,10 @@ const Login = () => {
         const data = await res.json(); // Parse JSON response
 
         if (res.ok) {
-          data.token = response.credential; // Assign token
+          console.log(data);
           logIn(data);
-          navigate("/dashboard");
+          window.location.href = "https://www.do.my.id/dashboard/";
         } else {
-          console.error("Login failed:", data.message);
           if (res.status === 401) {
             let userInfo = data.user; // Extract userInfo from the response
             logIn(userInfo);
