@@ -1,11 +1,71 @@
 import React, { useState } from "react";
 
 const LoginForm = () => {
-  const [username, setUsername] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const salt = "randomSalt123"; // Ideally, generate a unique salt for each user
+    const iterations = 100000;
+
+    const hashedPassword = await hashPassword(password, salt, iterations);
+
+    // Debugging: log input user dan hashed password
+    console.log("Phone Number:", phoneNumber);
+    console.log("Password:", password);
+    console.log("Hashed Password:", hashedPassword);
+
+    // Send phoneNumber and hashedPassword to the server
+    const response = await fetch(
+      "https://asia-southeast2-awangga.cloudfunctions.net/domyid/auth/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ phoneNumber, password: hashedPassword }),
+      }
+    );
+
+    const data = await response.json();
+    console.log(data);
+  };
+
+  const hashPassword = async (password, salt, iterations) => {
+    const enc = new TextEncoder();
+    const keyMaterial = await crypto.subtle.importKey(
+      "raw",
+      enc.encode(password),
+      { name: "PBKDF2" },
+      false,
+      ["deriveBits", "deriveKey"]
+    );
+
+    const key = await crypto.subtle.deriveKey(
+      {
+        name: "PBKDF2",
+        salt: enc.encode(salt),
+        iterations: iterations,
+        hash: "SHA-256",
+      },
+      keyMaterial,
+      { name: "AES-GCM", length: 256 },
+      true,
+      ["encrypt", "decrypt"]
+    );
+
+    const hashBuffer = await crypto.subtle.exportKey("raw", key);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray
+      .map((b) => b.toString(16).padStart(2, "0"))
+      .join("");
+    return hashHex;
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="form-control">
         <label className="input input-bordered flex items-center gap-2">
           <svg
@@ -19,9 +79,9 @@ const LoginForm = () => {
           <input
             type="text"
             className="grow"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Phone Number"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
           />
         </label>
       </div>
@@ -50,7 +110,9 @@ const LoginForm = () => {
         </label>
       </div>
       <div className="form-control mt-6">
-        <button className="btn btn-primary">Login</button>
+        <button className="btn btn-primary" type="submit">
+          Login
+        </button>
       </div>
     </form>
   );
