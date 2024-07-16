@@ -1,20 +1,10 @@
 import Swal from "sweetalert2";
-import bcrypt from "bcryptjs";
 
-const handleTypingAuth = async (e, phoneNumber, password) => {
+const handleTypingAuth = async (e, phoneNumber, navigate) => {
   e.preventDefault();
 
   try {
-    // Hash the password using bcryptjs
-    const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
-
-    // Debugging: log input user dan hashed password
-    console.log("Phone Number:", phoneNumber);
-    console.log("Password:", password);
-    console.log("Hashed Password:", hashedPassword);
-
-    // Send phoneNumber and hashedPassword to the server
+    // Send phoneNumber to the server
     const response = await fetch(
       "https://asia-southeast2-awangga.cloudfunctions.net/domyid/auth/login",
       {
@@ -22,10 +12,7 @@ const handleTypingAuth = async (e, phoneNumber, password) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          phonenumber: phoneNumber,
-          password: hashedPassword,
-        }),
+        body: JSON.stringify({ phonenumber: phoneNumber }),
       }
     );
 
@@ -38,17 +25,16 @@ const handleTypingAuth = async (e, phoneNumber, password) => {
 
     const responseData = await response.json();
 
-    console.log(responseData);
-
     // Display success message
     Swal.fire({
       icon: "success",
-      title: "Login Successful",
-      text: `Welcome, ${responseData.user.name}!`,
+      title: "Password Sent",
+      text: `A login password has been sent to ${phoneNumber}!`,
+      showConfirmButton: false,
+      timer: 2000,
+    }).then(() => {
+      navigate("/stp"); // Redirect to STP page
     });
-
-    // Redirect or handle successful login
-    window.location.href = "https://www.do.my.id/dashboard/";
   } catch (error) {
     console.error("Error:", error);
     Swal.fire({
@@ -59,4 +45,4 @@ const handleTypingAuth = async (e, phoneNumber, password) => {
   }
 };
 
-export default handleTypingAuth
+export default handleTypingAuth;

@@ -24,7 +24,7 @@ const LoginBox = () => {
           <GoogleSignInButton onSuccess={logIn} />
         </div>
 
-        <div className="divider">Or continue with</div>
+        <div className="divider">Login dengan no. handphone</div>
 
         <LoginForm />
       </div>
