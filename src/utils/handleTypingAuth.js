@@ -48,7 +48,7 @@ const handleTypingAuth = async (e, phoneNumber, password) => {
     });
 
     // Redirect or handle successful login
-    // For example, set user state, redirect to another page, etc.
+    window.location.href = "https://www.do.my.id/dashboard/";
   } catch (error) {
     console.error("Error:", error);
     Swal.fire({

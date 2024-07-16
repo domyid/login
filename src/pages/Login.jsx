@@ -35,7 +35,15 @@ const Login = () => {
         if (res.ok) {
           console.log(data);
           logIn(data);
-          window.location.href = "https://www.do.my.id/dashboard/";
+          Swal.fire({
+            icon: "success",
+            title: "Welcome!",
+            text: `Hello, ${data.user.name}!`,
+            showConfirmButton: false,
+            timer: 2000,
+          }).then(() => {
+            window.location.href = "https://www.do.my.id/dashboard/";
+          });
         } else {
           if (res.status === 401) {
             let userInfo = data.user; // Extract userInfo from the response
@@ -44,8 +52,11 @@ const Login = () => {
               icon: "warning",
               title: "Login Failed",
               text: data.message,
+              showConfirmButton: false,
+              timer: 2000,
+            }).then(() => {
+              window.location.href = "https://www.do.my.id/signin";
             });
-            window.location.href = "https://www.do.my.id/signin/";
           } else {
             Swal.fire({
               icon: "error",
