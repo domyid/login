@@ -67,28 +67,34 @@ const STP = () => {
   };
 
   return (
-    <div>
-      <h1>Enter the Password Sent to Your WhatsApp</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="form-control">
-          <label className="input input-bordered flex items-center gap-2">
-            <input
-              type="password"
-              className="grow"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
+    <div className="min-h-screen bg-blue-50 flex justify-center items-center">
+      <div className="card bg-base-100 w-96 shadow-xl">
+        <div className="card-body">
+          <h1 className="card-title">
+            Enter the Password Sent to Your WhatsApp
+          </h1>
+          <form onSubmit={handleSubmit}>
+            <div className="form-control">
+              <label className="input input-bordered flex items-center gap-2">
+                <input
+                  type="password"
+                  className="grow"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </label>
+            </div>
+            <div className="form-control mt-6">
+              <button className="btn btn-primary" type="submit">
+                Verify
+              </button>
+            </div>
+          </form>
+          <div className="mt-3">
+            <p>Resend password in: {counter} seconds</p>
+          </div>
         </div>
-        <div className="form-control mt-6">
-          <button className="btn btn-primary" type="submit">
-            Verify
-          </button>
-        </div>
-      </form>
-      <div className="mt-3">
-        <p>Resend password in: {counter} seconds</p>
       </div>
     </div>
   );
