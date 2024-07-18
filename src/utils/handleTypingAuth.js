@@ -4,6 +4,20 @@ const handleTypingAuth = async (e, phoneNumber, navigate) => {
   e.preventDefault();
 
   try {
+    // Confirm sending password via WhatsApp
+    const result = await Swal.fire({
+      title: "Confirm Phone Number",
+      text: `A login password will be sent to ${phoneNumber} via WhatsApp. Do you want to continue?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, send it!",
+      cancelButtonText: "No, cancel",
+    });
+
+    if (!result.isConfirmed) {
+      return; // Exit if the user cancels the action
+    }
+
     // Send phoneNumber to the server
     const response = await fetch(
       "https://asia-southeast2-awangga.cloudfunctions.net/domyid/auth/login",
