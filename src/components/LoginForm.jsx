@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import handleTypingAuth from "../utils/handleTypingAuth";
+import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 
 const LoginForm = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -9,7 +9,7 @@ const LoginForm = () => {
   const navigate = useNavigate();
 
   const validatePhoneNumber = (number) => {
-    const phoneRegex = /^(?:\+62|62|0)?[2-9]\d{8,11}$/;
+    const phoneRegex = /^62\d{9,15}$/;
     return phoneRegex.test(number);
   };
 
@@ -28,7 +28,11 @@ const LoginForm = () => {
       <div className="form-control">
         <label
           className={`input input-bordered flex items-center gap-2 ${
-            isValid === null ? "" : isValid ? "input-success" : "input-error"
+            isValid === null
+              ? ""
+              : isValid
+              ? "input-success"
+              : "input-secondary"
           }`}
         >
           <svg
@@ -42,7 +46,7 @@ const LoginForm = () => {
           <input
             type="text"
             className="grow"
-            placeholder="Phone Number"
+            placeholder="e.g., 6281234567890"
             value={phoneNumber}
             onChange={handleChange}
           />
@@ -56,7 +60,7 @@ const LoginForm = () => {
       </div>
       <div className="form-control mt-6">
         <button className="btn btn-primary" type="submit" disabled={!isValid}>
-          Berikutnya
+          Continue
         </button>
       </div>
     </form>
