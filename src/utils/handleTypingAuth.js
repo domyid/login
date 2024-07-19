@@ -26,14 +26,29 @@ const handleTypingAuth = async (e, phoneNumber, navigate) => {
           }
         );
 
+        const responseData = await response.json();
+
         // Check if the response is not OK (status code outside 200-299 range)
         if (!response.ok) {
-          const responseData = await response.json();
-          // console.log("Detailed Error Info:", responseData); // Log detail error dari server
-          throw new Error(responseData.message || responseData.response || "Error sending password");
+          if (response.status === 401) {
+            await Swal.fire({
+              icon: "warning",
+              title: "Login Failed",
+              text: responseData.message,
+              showConfirmButton: false,
+              timer: 2000,
+            }).then(() => {
+              window.location.href = "https://www.do.my.id/signin";
+            });
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Login Failed",
+              text: responseData.message,
+            });
+          }
+          return;
         }
-
-        const responseData = await response.json();
 
         // Display success message
         Swal.fire({
