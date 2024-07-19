@@ -140,10 +140,16 @@ const STP = () => {
 
   const renderer = ({ minutes, seconds, completed }) => {
     if (completed) {
-      // Render a completed state
-      return <span>00:00</span>;
+      const resendButton = document.getElementById("resendButton");
+      if (resendButton) {
+        resendButton.disabled = false;
+      }
+      return (
+        <span className="text-error">
+          Password has expired, please resend password
+        </span>
+      );
     } else {
-      // Render a countdown
       return (
         <span className="countdown font-mono text-2xl">
           <span style={{ "--value": minutes }}></span>:
