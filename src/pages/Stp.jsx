@@ -55,8 +55,8 @@ const STP = () => {
       if (response.ok) {
         Swal.fire({
           icon: "success",
-          title: "Login Successful",
-          text: "You have successfully logged in.",
+          title: `${data.message}`,
+          text: `Welcome, ${data.name}`,
         }).then(() => {
           // Set the cookie token
           Cookies.set("login", data.token, {
