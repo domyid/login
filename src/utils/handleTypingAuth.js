@@ -53,8 +53,8 @@ const handleTypingAuth = async (e, phoneNumber, navigate) => {
         // Display success message
         Swal.fire({
           icon: "success",
-          title: "Password Sent",
-          text: `A login password has been sent to ${phoneNumber}!`,
+          title: `${responseData.message}`,
+          text: `A login password has been sent to ${responseData.phonenumber}!`,
           showConfirmButton: false,
           timer: 2000,
         }).then(() => {
