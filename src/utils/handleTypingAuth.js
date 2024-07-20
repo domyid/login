@@ -38,7 +38,7 @@ const handleTypingAuth = async (e, phoneNumber, navigate) => {
               showConfirmButton: false,
               timer: 2000,
             }).then(() => {
-              window.location.href = "https://www.do.my.id/signin";
+              window.location.href = "https://www.do.my.id/signup";
             });
           } else {
             Swal.fire({
