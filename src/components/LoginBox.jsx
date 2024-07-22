@@ -15,7 +15,7 @@ const LoginBox = () => {
 
   return (
     <div className="card flex justify-center flex-col p-8 w-full max-w-sm shadow-lg bg-base-100">
-      <div className="md:card-body py-3 md:py-0">
+      <div className="md:px-2 py-3 md:py-0">
         {/* Logo */}
         <div className="flex flex-col items-center">
           <img
@@ -26,11 +26,11 @@ const LoginBox = () => {
         </div>
         {/* Logo */}
 
-        <div className="flex flex-wrap w-full justify-center p-3">
+        <div className="flex flex-wrap w-full justify-center py-3">
           <GoogleSignInButton onSuccess={logIn} />
         </div>
 
-        <div className="flex flex-wrap w-full justify-center p-3">
+        <div className="flex flex-wrap w-full justify-center py-3">
           <button
             onClick={handleQRAuth}
             className="btn btn-outline btn-primary w-full"

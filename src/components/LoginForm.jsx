@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import handleTypingAuth from "../utils/handleTypingAuth";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import TurnstileWidget from "./TurnstileWidget";
 
 const LoginForm = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isValid, setIsValid] = useState(null);
   const navigate = useNavigate();
+  const [captchaToken, setCaptchaToken] = useState("");
 
   const validatePhoneNumber = (number) => {
     const phoneRegex = /^62\d{9,15}$/;
@@ -23,8 +25,13 @@ const LoginForm = () => {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleTypingAuth(e, phoneNumber, captchaToken, navigate);
+  };
+
   return (
-    <form onSubmit={(e) => handleTypingAuth(e, phoneNumber, navigate)}>
+    <form onSubmit={handleSubmit}>
       <div className="form-control">
         <label
           className={`input input-bordered flex items-center gap-2 ${
@@ -58,11 +65,17 @@ const LoginForm = () => {
             ))}
         </label>
       </div>
+
       <div className="form-control mt-6">
-        <button className="btn btn-primary" type="submit" disabled={!isValid}>
+        <button
+          className="btn btn-primary"
+          type="submit"
+          disabled={!isValid || !captchaToken}
+        >
           Continue
         </button>
       </div>
+      <TurnstileWidget onToken={setCaptchaToken} />
     </form>
   );
 };

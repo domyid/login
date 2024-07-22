@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-const handleTypingAuth = async (e, phoneNumber, navigate) => {
+const handleTypingAuth = async (e, phoneNumber, captchaToken, navigate) => {
   e.preventDefault();
 
   Swal.fire({
@@ -22,7 +22,10 @@ const handleTypingAuth = async (e, phoneNumber, navigate) => {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ phonenumber: phoneNumber }),
+            body: JSON.stringify({
+              phonenumber: phoneNumber,
+              captcha: captchaToken,
+            }),
           }
         );
 
