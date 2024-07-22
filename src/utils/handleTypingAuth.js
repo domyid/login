@@ -41,13 +41,13 @@ const handleTypingAuth = async (e, phoneNumber, captchaToken, navigate) => {
               showConfirmButton: false,
               timer: 2000,
             }).then(() => {
-              window.location.href = "https://www.do.my.id/signin";
+              navigate("/qrauth")
             });
           } else {
             Swal.fire({
               icon: "error",
               title: "Login Failed",
-              text: responseData.message,
+              text: responseData.status,
             });
           }
           return;
