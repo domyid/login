@@ -75,7 +75,7 @@ const LoginForm = () => {
           Continue
         </button>
       </div>
-      <TurnstileWidget onToken={setCaptchaToken} />
+      <TurnstileWidget setCaptchaToken={setCaptchaToken} />
     </form>
   );
 };
