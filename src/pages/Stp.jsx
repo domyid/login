@@ -77,7 +77,8 @@ const STP = () => {
     }
   };
 
-  const handleResendPassword = async () => {
+  const handleResendPassword = async (e) => {
+    e.preventDefault();
     try {
       // Send phoneNumber to the server to resend the password
       const response = await fetch(
@@ -105,7 +106,7 @@ const STP = () => {
       // Display success message
       Swal.fire({
         icon: "success",
-        title: "Password Sent",
+        title: `${responseData.message}`,
         text: `A login password has been resent to ${responseData.phonenumber}!`,
         showConfirmButton: false,
         timer: 2000,
