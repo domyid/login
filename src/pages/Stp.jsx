@@ -9,7 +9,7 @@ const STP = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
-  const [counter, setCounter] = useState(240000); // 4 minutes in milliseconds for react-countdown
+  const [counter, setCounter] = useState(Date.now() + 240000); // 4 minutes in milliseconds for react-countdown
   const phoneNumber = location.state?.phoneNumber || "";
 
   useEffect(() => {
@@ -24,16 +24,6 @@ const STP = () => {
       });
     }
   }, [phoneNumber, navigate]);
-
-  useEffect(() => {
-    // Enable resend button when counter reaches 0
-    if (counter === 0) {
-      const resendButton = document.getElementById("resendButton");
-      if (resendButton) {
-        resendButton.disabled = false;
-      }
-    }
-  }, [counter]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -105,7 +95,6 @@ const STP = () => {
 
       // Check if the response is not OK (status code outside 200-299 range)
       if (!response.ok) {
-        // console.log("Detailed Error Info:", responseData); // Log detail error dari server
         throw new Error(
           responseData.message ||
             responseData.response ||
@@ -123,7 +112,7 @@ const STP = () => {
       });
 
       // Reset counter after resending password
-      setCounter(240000); // Reset counter to 4 minutes in milliseconds
+      setCounter(Date.now() + 240000); // Reset counter to 4 minutes in milliseconds
       const resendButton = document.getElementById("resendButton");
       if (resendButton) {
         resendButton.disabled = true;
@@ -193,13 +182,13 @@ const STP = () => {
           <div className="mt-3">
             <p>
               Resend password in:{" "}
-              <Countdown date={Date.now() + counter} renderer={renderer} />
+              <Countdown date={counter} renderer={renderer} />
             </p>
             <button
               id="resendButton"
               className="btn btn-outline btn-primary mt-2"
               onClick={handleResendPassword}
-              disabled={counter > 0}
+              disabled={counter > Date.now()}
             >
               Resend Password
             </button>
