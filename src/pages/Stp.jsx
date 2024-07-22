@@ -64,8 +64,8 @@ const STP = () => {
       } else {
         Swal.fire({
           icon: "error",
-          title: "Login Failed",
-          text: data.message,
+          title: data.status,
+          text: data.response,
         });
       }
     } catch (error) {
@@ -95,11 +95,11 @@ const STP = () => {
 
       // Check if the response is not OK (status code outside 200-299 range)
       if (!response.ok) {
-        throw new Error(
-          responseData.message ||
-            responseData.response ||
-            "Error resending password"
-        );
+        Swal.fire({
+          icon: "error",
+          title: "Resend Failed",
+          text: responseData.status,
+        });
       }
 
       // Display success message

@@ -37,11 +37,11 @@ const handleTypingAuth = async (e, phoneNumber, captchaToken, navigate) => {
             await Swal.fire({
               icon: "warning",
               title: "Login Failed",
-              text: responseData.message,
+              text: responseData.status,
               showConfirmButton: false,
               timer: 2000,
             }).then(() => {
-              window.location.href = "https://www.do.my.id/signup";
+              window.location.href = "https://www.do.my.id/signin";
             });
           } else {
             Swal.fire({
