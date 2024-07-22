@@ -23,7 +23,7 @@ const WhatsAuthQR = () => {
         wauthparam.keyword =
           "aHR0cHM6Ly93YS5tZS82Mjg5NTYwMTA2MDAwMD90ZXh0PXdoNHQ1YXV0aDA=";
         wauthparam.tokencookiehourslifetime = 18;
-        wauthparam.redirect = "/auth";
+        wauthparam.redirect = "/dashboard";
         deleteCookie(wauthparam.tokencookiename);
 
         // Pengecekan keberadaan elemen sebelum memanggil qrController
@@ -54,7 +54,7 @@ const WhatsAuthQR = () => {
   return (
     <div
       id="hasphonenumber"
-      className="w-full min-h-screen bg-base-200 flex items-center justify-center py-10"
+      className="w-full min-h-screen bg-blue-50 flex items-center justify-center py-10"
     >
       <ThemeController />
       <div className="card w-96 bg-base-100 shadow-xl">
@@ -67,8 +67,11 @@ const WhatsAuthQR = () => {
             </p>
           </div>
         ) : (
-          <div className="text-center">
-            <span className=" loading loading-dots loading-lg"></span>
+          <div className="text-center p-3">
+            <p className="text-gray-700 mt-3">
+              Please scan the QR code with your WhatsApp camera to provide your
+              phone number.
+            </p>
           </div>
         )}
 

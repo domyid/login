@@ -20,7 +20,7 @@ const STP = () => {
         text: "Please input your phone number on the login page.",
         confirmButtonText: "Go to Login",
       }).then(() => {
-        navigate("/login"); // Redirect to the login page
+        navigate("/"); // Redirect to the login page
       });
     }
   }, [phoneNumber, navigate]);

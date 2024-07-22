@@ -5,6 +5,7 @@ import ProtectedRoute from "./utils/ProtectedRoute";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import STP from "./pages/Stp";
+import WhatsAuthQR from "./pages/WhatsAuthQr";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
             }
           />
           <Route path="/stp" element={<STP/>}/>
+          <Route path="/qrauth" element={<WhatsAuthQR/>}/>
         </Routes>
       </AuthProvider>
     </Router>
