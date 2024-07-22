@@ -9,7 +9,7 @@ const STP = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
-  const [counter, setCounter] = useState(Date.now() + 240000); // 4 minutes in milliseconds for react-countdown
+  const [counter, setCounter] = useState(Date.now() + 60000); // 1 minute in milliseconds for react-countdown
   const phoneNumber = location.state?.phoneNumber || "";
 
   useEffect(() => {
@@ -112,11 +112,7 @@ const STP = () => {
       });
 
       // Reset counter after resending password
-      setCounter(Date.now() + 240000); // Reset counter to 4 minutes in milliseconds
-      const resendButton = document.getElementById("resendButton");
-      if (resendButton) {
-        resendButton.disabled = true;
-      }
+      setCounter(Date.now() + 60000); // Reset counter to 1 minute in milliseconds
     } catch (error) {
       console.error("Error:", error);
       Swal.fire({
@@ -129,20 +125,21 @@ const STP = () => {
 
   const renderer = ({ minutes, seconds, completed }) => {
     if (completed) {
-      const resendButton = document.getElementById("resendButton");
-      if (resendButton) {
-        resendButton.disabled = false;
-      }
       return (
-        <span className="text-error">
-          Password has expired, please resend password
-        </span>
+        <div>
+          Did not receive the password?{" "}
+          <span
+            className="text-blue-500 cursor-pointer"
+            onClick={handleResendPassword}
+          >
+            Resend
+          </span>
+        </div>
       );
     } else {
       return (
-        <span className="countdown font-mono text-2xl">
-          <span style={{ "--value": minutes }}></span>:
-          <span style={{ "--value": seconds }}></span>
+        <span className="countdown font-sans">
+          Please wait {seconds} seconds to resend the password
         </span>
       );
     }
@@ -154,7 +151,7 @@ const STP = () => {
         <div className="card-body">
           <div className="card-head text-center">
             <h1 className="card-title font-thin">
-              Password has been sent via WhatsApp to
+              Password telah dikirim melalui WhatsApp ke
             </h1>
             <div className="card-user_info flex justify-center items-center py-2 gap-2">
               <FaWhatsapp className="text-3xl" />
@@ -181,17 +178,8 @@ const STP = () => {
           </form>
           <div className="mt-3">
             <p>
-              Resend password in:{" "}
-              <Countdown date={counter} renderer={renderer} />
+              <Countdown key={counter} date={counter} renderer={renderer} />
             </p>
-            <button
-              id="resendButton"
-              className="btn btn-outline btn-primary mt-2"
-              onClick={handleResendPassword}
-              disabled={counter > Date.now()}
-            >
-              Resend Password
-            </button>
           </div>
         </div>
       </div>
