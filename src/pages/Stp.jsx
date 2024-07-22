@@ -81,7 +81,7 @@ const STP = () => {
     try {
       // Send phoneNumber to the server to resend the password
       const response = await fetch(
-        "https://asia-southeast2-awangga.cloudfunctions.net/domyid/auth/login",
+        "https://asia-southeast2-awangga.cloudfunctions.net/domyid/auth/resend",
         {
           method: "POST",
           headers: {
@@ -106,7 +106,7 @@ const STP = () => {
       Swal.fire({
         icon: "success",
         title: "Password Sent",
-        text: `A login password has been resent to ${phoneNumber}!`,
+        text: `A login password has been resent to ${responseData.phonenumber}!`,
         showConfirmButton: false,
         timer: 2000,
       });
