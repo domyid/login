@@ -151,7 +151,7 @@ const STP = () => {
         <div className="card-body">
           <div className="card-head text-center">
             <h1 className="card-title font-thin">
-              Password telah dikirim melalui WhatsApp ke
+              Password has been sent via WhatsApp to
             </h1>
             <div className="card-user_info flex justify-center items-center py-2 gap-2">
               <FaWhatsapp className="text-3xl" />
