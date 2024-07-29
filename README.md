@@ -1,70 +1,93 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Secure Web Authentication Project
 
-## Available Scripts
+This project is a secure web authentication system built with React for the front-end and Go for the back-end. The system incorporates multiple authentication methods including QR code, OAuth2 (Google), and short temporary password (STP) to enhance security on static websites.
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Installation](#installation)
+- [Development](#development)
+- [Deployment](#deployment)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To get started with this project, you need to clone the repository and install the necessary dependencies.
 
-### `npm test`
+```bash
+git clone
+cd login
+npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Development
 
-### `npm run build`
+To start the development server, use the following command:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This will run the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits. You will also see any lint errors in the console.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Deployment
 
-### `npm run eject`
+1. **Build the app for production** to the `build` folder using the following command:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    ```bash
+    npm run build
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    This will correctly bundle React in production mode and optimize the build for the best performance.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. **Commit your changes** with a descriptive commit message.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    ```bash
+    git add .
+    git commit -m "Build for deployment: your feature description"
+    ```
 
-## Learn More
+3. **Deploy the app using GitHub Pages** by running:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    ```bash
+    npm run deploy
+    ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Additional Information
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Environment Setup
 
-### Analyzing the Bundle Size
+Ensure you have Node.js and npm installed on your machine. You can download Node.js and npm from [here](https://nodejs.org/).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Scripts
 
-### Making a Progressive Web App
+- `npm start`: Runs the app in development mode.
+- `npm run build`: Builds the app for production.
+- `npm run deploy`: Deploys the app to GitHub Pages.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Important Endpoints
 
-### Advanced Configuration
+- `/auth/login`: Endpoint to send the phone number and receive a temporary password.
+- `/auth/verify`: Endpoint to verify the temporary password.
+- `/auth/resend`: Endpoint to resend the temporary password.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Front-End Dependencies
 
-### Deployment
+- **react**: A JavaScript library for building user interfaces.
+- **react-router-dom**: DOM bindings for React Router.
+- **sweetalert2**: A beautiful, responsive, customizable replacement for JavaScript's popup boxes.
+- **react-icons**: Include popular icons in your React projects easily.
+- **react-countdown**: A customizable countdown component for React.
+- **js-cookie**: A simple, lightweight JavaScript API for handling cookies.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Back-End
 
-### `npm run build` fails to minify
+The back-end is built with Go and provides various authentication endpoints. Ensure the Go environment is set up correctly, and the back-end server is running to handle requests from the front-end.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contact
+
+For any questions or concerns, please open an issue or contact the repository owner.
+
+```
+
+This README provides a comprehensive guide for developers to set up their environment, run the project, and contribute to it. Adjust the URLs and repository names as necessary to fit your project's specifics.
