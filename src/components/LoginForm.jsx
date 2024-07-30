@@ -16,7 +16,13 @@ const LoginForm = () => {
   };
 
   const handleChange = (e) => {
-    const number = e.target.value;
+    let number = e.target.value;
+
+    // Replace leading 0 with 62
+    if (number.startsWith("0")) {
+      number = "62" + number.slice(1);
+    }
+
     setPhoneNumber(number);
     if (validatePhoneNumber(number)) {
       setIsValid(true);
