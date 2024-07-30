@@ -20,8 +20,8 @@ const Text = () => {
       <div className="py-2">
         <h2 className="text-2xl font-bold">2. Autentikasi dengan QR Code</h2>
         <p className="text-justify">
-          Jika memilih QR code, pindai kode QR yang ditampilkan di layar
-          menggunakan perangkat mobile Anda.
+          Jika memilih QR code, buka kamera pada aplikasi whatsapp anda lalu
+          pindai kode QR yang ditampilkan di layar.
         </p>
       </div>
 
