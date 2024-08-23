@@ -1,17 +1,17 @@
+# Proyek Secure Web Authentication
 
-# Secure Web Authentication Project
+Proyek ini adalah sistem autentikasi web yang aman, dibangun dengan React untuk bagian front-end dan Go untuk bagian back-end. Sistem ini mengintegrasikan berbagai metode autentikasi, termasuk QR code, OAuth2 (Google), dan kata sandi sementara (STP) untuk meningkatkan keamanan pada situs web statis.
 
-This project is a secure web authentication system built with React for the front-end and Go for the back-end. The system incorporates multiple authentication methods including QR code, OAuth2 (Google), and short temporary password (STP) to enhance security on static websites.
+## Daftar Isi
 
-## Table of Contents
-
-- [Installation](#installation)
-- [Development](#development)
+- [Persiapan Awal](#persiapan-awal)
+- [Pengembangan](#pengembangan)
 - [Deployment](#deployment)
+- [Informasi Tambahan](#informasi-tambahan)
 
-## Installation
+## Persiapan Awal
 
-To get started with this project, you need to clone the repository and install the necessary dependencies.
+Untuk memulai proyek ini, pertama-tama Anda perlu meng-clone repository dan menginstal semua dependensi yang diperlukan.
 
 ```bash
 git clone
@@ -19,75 +19,66 @@ cd login
 npm install
 ```
 
-## Development
+## Pengembangan
 
-To start the development server, use the following command:
+Untuk memulai server pengembangan, gunakan perintah berikut:
 
 ```bash
 npm start
 ```
 
-This will run the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits. You will also see any lint errors in the console.
+Perintah ini akan menjalankan aplikasi dalam mode pengembangan. Buka [http://localhost:3000](http://localhost:3000) di browser Anda untuk melihatnya. Halaman akan memuat ulang secara otomatis jika Anda melakukan perubahan. Anda juga akan melihat kesalahan linting di konsol.
 
 ## Deployment
 
-1. **Build the app for production** to the `build` folder using the following command:
+1. **Bangun aplikasi untuk produksi** ke dalam folder `build` dengan perintah berikut:
 
     ```bash
     npm run build
     ```
 
-    This will correctly bundle React in production mode and optimize the build for the best performance.
+    Ini akan mengemas React dengan benar dalam mode produksi dan mengoptimalkan build untuk performa terbaik.
 
-2. **Commit your changes** with a descriptive commit message.
+2. **Commit perubahan Anda** dengan pesan commit yang deskriptif.
 
     ```bash
     git add .
-    git commit -m "Build for deployment: your feature description"
+    git commit -m "Build untuk deployment: deskripsi fitur Anda"
     ```
 
-3. **Deploy the app using GitHub Pages** by running:
+3. **Deploy aplikasi menggunakan GitHub Pages** dengan menjalankan perintah:
 
     ```bash
     npm run deploy
     ```
 
+## Informasi Tambahan
 
-## Additional Information
+### Pengaturan Lingkungan
 
-### Environment Setup
+Pastikan Anda telah menginstal Node.js dan npm di mesin Anda. Anda bisa mendownload Node.js dan npm dari [sini](https://nodejs.org/).
 
-Ensure you have Node.js and npm installed on your machine. You can download Node.js and npm from [here](https://nodejs.org/).
+### Skrip
 
-### Scripts
+- `npm start`: Menjalankan aplikasi dalam mode pengembangan.
+- `npm run build`: Membangun aplikasi untuk produksi.
+- `npm run deploy`: Mendepoy aplikasi ke GitHub Pages.
 
-- `npm start`: Runs the app in development mode.
-- `npm run build`: Builds the app for production.
-- `npm run deploy`: Deploys the app to GitHub Pages.
+### Endpoint Penting
 
-### Important Endpoints
+- `/auth/login`: Endpoint untuk mengirim nomor telepon dan menerima kata sandi sementara.
+- `/auth/verify`: Endpoint untuk memverifikasi kata sandi sementara.
+- `/auth/resend`: Endpoint untuk mengirim ulang kata sandi sementara.
 
-- `/auth/login`: Endpoint to send the phone number and receive a temporary password.
-- `/auth/verify`: Endpoint to verify the temporary password.
-- `/auth/resend`: Endpoint to resend the temporary password.
+### Dependensi Front-End
 
-### Front-End Dependencies
-
-- **react**: A JavaScript library for building user interfaces.
-- **react-router-dom**: DOM bindings for React Router.
-- **sweetalert2**: A beautiful, responsive, customizable replacement for JavaScript's popup boxes.
-- **react-icons**: Include popular icons in your React projects easily.
-- **react-countdown**: A customizable countdown component for React.
-- **js-cookie**: A simple, lightweight JavaScript API for handling cookies.
+- **react**: Library JavaScript untuk membangun antarmuka pengguna.
+- **react-router-dom**: Binding DOM untuk React Router.
+- **sweetalert2**: Pengganti popup box JavaScript yang indah, responsif, dan dapat disesuaikan.
+- **react-icons**: Memasukkan ikon populer ke dalam proyek React dengan mudah.
+- **react-countdown**: Komponen countdown yang dapat disesuaikan untuk React.
+- **js-cookie**: API JavaScript yang sederhana dan ringan untuk menangani cookie.
 
 ### Back-End
 
-The back-end is built with Go and provides various authentication endpoints. Ensure the Go environment is set up correctly, and the back-end server is running to handle requests from the front-end.
-
-## Contact
-
-For any questions or concerns, please open an issue or contact the repository owner.
-
-```
-
-This README provides a comprehensive guide for developers to set up their environment, run the project, and contribute to it. Adjust the URLs and repository names as necessary to fit your project's specifics.
+Back-end dibangun dengan Go dan menyediakan berbagai endpoint autentikasi. Pastikan lingkungan Go Anda telah disiapkan dengan benar, dan server back-end berjalan untuk menangani permintaan dari front-end.
